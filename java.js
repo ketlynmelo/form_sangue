@@ -12,7 +12,7 @@ form.addEventListener('submit', function (e) {
     let email = document.getElementById('email').value;
     let idade = document.getElementById('idade').value;
     let peso = document.getElementById('peso').value;
-    let tipo_Sanguineo = document.getElementById('tipo_sangue').value;
+    let tipo_sangue = document.getElementById('tipo_sangue').value;
     let telefone = document.getElementById('telefone').value;
     let cidade = document.getElementById('cidade').value;
     let estado = document.getElementById('estado').value;
@@ -22,7 +22,7 @@ form.addEventListener('submit', function (e) {
     document.getElementById('erroEmail').textContent = '';
     document.getElementById('erroIdade').textContent = '';
     document.getElementById('erroPeso').textContent = '';
-    document.getElementById('erroTipo_sanguineo').textContent = '';
+    document.getElementById('errotipo_sangue').textContent = '';
     document.getElementById('erroTelefone').textContent = '';
     document.getElementById('erroCidade').textContent = '';
     document.getElementById('erroEstado').textContent = '';
@@ -34,6 +34,11 @@ form.addEventListener('submit', function (e) {
         valido = false;
     }
 
+    if (tipo_sangue === "Selecione") {
+        alert("Você precisa selecionar seu tipo sanguíneo.");
+        valido = false;
+}
+    
     if (!email.includes('@') || !email.includes('.')) {
 
         document.getElementById('erroEmail').textContent = 'Email inválido';
@@ -59,7 +64,11 @@ form.addEventListener('submit', function (e) {
 
     }
 
+    if (!nome || !tipo_sangue ){
+        alert("Preencha todos os campos obrigatórios");
+        valido = false;
 
+    }
 
     if (valido) {
 
@@ -68,7 +77,7 @@ form.addEventListener('submit', function (e) {
             email: email,
             idade: idade,
             peso: peso,
-            tipo_Sanguineo: tipo_Sanguineo,
+            tipo_sangue: tipo_sangue,
             telefone: telefone,
             cidade: cidade,
             estado: estado
@@ -76,7 +85,7 @@ form.addEventListener('submit', function (e) {
 
         dados.push(usuario);
 
-        console.log(dados);
+        console.table(dados);
 
         alert('Formulário enviado com sucesso!');
 
